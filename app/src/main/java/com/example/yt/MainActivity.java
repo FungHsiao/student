@@ -19,22 +19,17 @@ public class MainActivity extends AppCompatActivity {
         btn_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               stu();
+                Intent intent=new Intent(MainActivity.this,StudentActivity.class);
+                startActivity(intent);
             }
         });
         btn_teacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tea();
+                Intent intent=new Intent(MainActivity.this,TeacherActivity.class);
+                startActivity(intent);
             }
         });
     }
-    public void stu(){
-        Intent intent=new Intent(this,StudentActivity.class);
-        startActivity(intent);
-    }
-    public void tea(){
-        Intent intent=new Intent(this,StudentActivity.class);
-        startActivity(intent);
-    }
+
 }
