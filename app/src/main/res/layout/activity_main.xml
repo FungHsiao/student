@@ -9,21 +9,25 @@
 
     <Button
         android:id="@+id/btn_main_student"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/button1"
         android:text="学生端"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_main_teacher"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.584" />
 
     <Button
         android:id="@+id/btn_main_teacher"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/button1"
         android:text="教师端"
+        android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn_main_student"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
