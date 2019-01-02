@@ -15,9 +15,9 @@ public class QueryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query);
 
-        edtTxt_number=findViewById(R.id.edtTxt_update_number);
-        edtTxt_name=findViewById(R.id.edtTxt_update_name);
-        edtTxt_course=findViewById(R.id.edtTxt_update_course);
+        edtTxt_number=findViewById(R.id.edtTxt_query_number);
+        edtTxt_name=findViewById(R.id.edtTxt_query_name);
+        edtTxt_course=findViewById(R.id.edtTxt_query_course);
         btn_query=findViewById(R.id.btn_query_query);
         btn_return=findViewById(R.id.btn_query_return);
 
