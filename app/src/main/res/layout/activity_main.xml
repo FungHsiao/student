@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/btn_main_student"
-        android:layout_width="120dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button1"
         android:text="学生端"
@@ -23,7 +23,7 @@
 
     <Button
         android:id="@+id/btn_main_teacher"
-        android:layout_width="120dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button1"
         android:text="教师端"
