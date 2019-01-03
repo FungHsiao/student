@@ -28,8 +28,8 @@ public class DeleteActivity extends AppCompatActivity {
         btn_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(DeleteActivity.this,deleteDialog.class);
-                startActivity(intent);
+                deleteDialog dia=new deleteDialog(DeleteActivity.this,"该操作将无法恢复，请谨慎使用！");
+                dia.show();
             }
         });
         btn_delete.setOnClickListener(new View.OnClickListener() {
