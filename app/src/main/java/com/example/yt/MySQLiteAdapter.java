@@ -119,21 +119,22 @@ public class MySQLiteAdapter {
         return list;
     }
     //修改
+    */
     public boolean update(Infor infor){
         boolean result=false;
         openDatabase();
         ContentValues values=new ContentValues();
         values.put("score",infor.getScore());
-        int num=db.update("information",values,"name=? and subject=?",new String[]{infor.getName(),infor.getSubject()});
+        int num=db.update("information",values,"number=? and name=? and course=?",new String[]{infor.getNumber(),infor.getName(),infor.getCourse()});
         if(num>0){
             result=true;
-            Toast.makeText(context,"修改成功",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"成绩修改成功",Toast.LENGTH_SHORT).show();
         }else {
-            Toast.makeText(context,"无法修改",Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,"信息错误，成绩修改失败",Toast.LENGTH_SHORT).show();
         }
         closeDatabase();
         return result;
-    }*/
+    }
     //删除
     public boolean delete(String number,String name,String course) {
         openDatabase();
@@ -158,7 +159,7 @@ public class MySQLiteAdapter {
             result = true;
             Toast.makeText(context, "成绩删除成功", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "成绩删除失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "信息错误，成绩删除失败", Toast.LENGTH_SHORT).show();
         }
         closeDatabase();
         return result;

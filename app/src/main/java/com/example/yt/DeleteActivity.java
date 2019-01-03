@@ -54,5 +54,6 @@ public class DeleteActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

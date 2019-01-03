@@ -28,6 +28,17 @@ public class UpdateActivity extends AppCompatActivity {
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String number=edtTxt_number.getText().toString().trim();
+                String name=edtTxt_name.getText().toString().trim();
+                String course=edtTxt_course.getText().toString().trim();
+                Float score=Float.valueOf(edtTxt_score.getText().toString().trim());
+                Infor infor=new Infor();
+                infor.setNumber(number);
+                infor.setName(name);
+                infor.setCourse(course);
+                infor.setScore(score);
+                MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
+                adapter.update(infor);
 
             }
         });
