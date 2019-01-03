@@ -26,6 +26,7 @@ public class deleteDialog extends Dialog{
             @Override
             public void onClick(View v) {
 
+
             }
         });
         btn_cancel.setOnClickListener(new View.OnClickListener() {

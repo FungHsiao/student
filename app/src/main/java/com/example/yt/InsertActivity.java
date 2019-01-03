@@ -41,6 +41,8 @@ public class InsertActivity extends AppCompatActivity {
                 else {
                     Toast.makeText(getApplicationContext(),"成绩录入失败",Toast.LENGTH_SHORT).show();
                 }
+                edtTxt_course.setText(null);
+                edtTxt_score.setText(null);
 
             }
         });

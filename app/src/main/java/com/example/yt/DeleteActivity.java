@@ -3,6 +3,7 @@ package com.example.yt;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +36,14 @@ public class DeleteActivity extends AppCompatActivity {
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String number=edtTxt_number.getText().toString().trim();
+                String name=edtTxt_name.getText().toString().trim();
+                String course=edtTxt_course.getText().toString().trim();
+                MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
+                Log.i("number",number);
+                Log.i("name",name);
+                Log.i("course",course);
+                adapter.delete(number,name,course);
 
             }
         });

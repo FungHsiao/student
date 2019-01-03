@@ -133,23 +133,38 @@ public class MySQLiteAdapter {
         }
         closeDatabase();
         return result;
-    }
+    }*/
     //删除
-    public boolean delete(String name,String subject){
+    public boolean delete(String number,String name,String course) {
         openDatabase();
-        boolean result=false;
-        int num=db.delete("information","name=? and subject=?",new String[]{name,subject});
-        if(num>0){
-            result=true;
-            Toast.makeText(context,"删除成功",Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(context,"无法删除",Toast.LENGTH_SHORT).show();
+        boolean result = false;
+        int num = db.delete("information", "number=? and name=? and course=?", new String[]{number, name, course});
+        if (num > 0) {
+            result = true;
+            Toast.makeText(context, "成绩删除成功", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "成绩删除失败", Toast.LENGTH_SHORT).show();
         }
         closeDatabase();
         return result;
-    }*/
 
 
+    }
+    public boolean deleteAll() {
+        openDatabase();
+        boolean result = false;
+        int num = db.delete("information", null,null);
+        if (num > 0) {
+            result = true;
+            Toast.makeText(context, "成绩删除成功", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "成绩删除失败", Toast.LENGTH_SHORT).show();
+        }
+        closeDatabase();
+        return result;
+
+
+    }
 
 }
 
