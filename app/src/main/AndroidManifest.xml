@@ -21,7 +21,8 @@
         <activity android:name=".InsertActivity" />
         <activity android:name=".QueryActivity" />
         <activity android:name=".UpdateActivity" />
-        <activity android:name=".DeleteActivity"></activity>
+        <activity android:name=".DeleteActivity" />
+        <activity android:name=".deleteDialog"></activity>
     </application>
 
 </manifest>

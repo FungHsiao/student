@@ -28,7 +28,8 @@ public class DeleteActivity extends AppCompatActivity {
         btn_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(DeleteActivity.this,deleteDialog.class);
+                startActivity(intent);
             }
         });
         btn_delete.setOnClickListener(new View.OnClickListener() {
