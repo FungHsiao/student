@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class InsertActivity extends AppCompatActivity {
     EditText edtTxt_number,edtTxt_name,edtTxt_course,edtTxt_score;
@@ -25,6 +26,21 @@ public class InsertActivity extends AppCompatActivity {
         btn_insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
+                Infor infor=new Infor();
+                infor.setNumber(edtTxt_number.getText().toString().trim());
+                infor.setName(edtTxt_name.getText().toString().trim());
+                infor.setCourse(edtTxt_course.getText().toString().trim());
+                infor.setScore(Float.valueOf(edtTxt_score.getText().toString().trim()));
+                long result=adapter.insert(infor);
+                if(result==0){
+                    Toast.makeText(getApplicationContext(),"该成绩已存在",Toast.LENGTH_SHORT).show();
+                }else if(result>0){
+                    Toast.makeText(getApplicationContext(),"成绩录入成功",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"成绩录入失败",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

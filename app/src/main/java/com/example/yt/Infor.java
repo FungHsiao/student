@@ -5,7 +5,7 @@ public class Infor {
     private String number;
     private String name;
     private String course;
-    private int score;
+    private Float score;
 
     public String getNumber() {
         return number;
@@ -31,11 +31,11 @@ public class Infor {
         this.course = course;
     }
 
-    public int getScore() {
+    public Float getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Float score) {
         this.score = score;
     }
 }
