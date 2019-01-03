@@ -48,7 +48,6 @@ public class MySQLiteAdapter {
         return rowid;
     }
     //查询
-    /*
     public List<Infor> queryAll(){
         openDatabase();
         List<Infor> list=new ArrayList<Infor>();
@@ -58,8 +57,9 @@ public class MySQLiteAdapter {
             cursor.moveToFirst();
             do{
                 Infor infor=new Infor();
+                infor.setNumber(cursor.getString(cursor.getColumnIndex("number")));
                 infor.setName(cursor.getString(cursor.getColumnIndex("name")));
-                infor.setSubject(cursor.getString(cursor.getColumnIndex("subject")));
+                infor.setCourse(cursor.getString(cursor.getColumnIndex("course")));
                 infor.setScore(cursor.getFloat(cursor.getColumnIndex("score")));
                 list.add(infor);
             }while (cursor.moveToNext());
@@ -67,16 +67,17 @@ public class MySQLiteAdapter {
         closeDatabase();
         return list;
     }
-    public List<Infor> queryByname(String name){
+    public List<Infor> queryBynameNo(String number,String name){
         openDatabase();
         List<Infor> list=new ArrayList<Infor>();
-        Cursor cursor=db.query("information",null,"name=?",new String[]{name},null,null,null);
+        Cursor cursor=db.query("information",null,"number=? or name=?",new String[]{number,name},null,null,null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
                 Infor infor=new Infor();
+                infor.setNumber(cursor.getString(cursor.getColumnIndex("number")));
                 infor.setName(cursor.getString(cursor.getColumnIndex("name")));
-                infor.setSubject(cursor.getString(cursor.getColumnIndex("subject")));
+                infor.setCourse(cursor.getString(cursor.getColumnIndex("course")));
                 infor.setScore(cursor.getFloat(cursor.getColumnIndex("score")));
                 list.add(infor);
             }while (cursor.moveToNext());
@@ -84,16 +85,17 @@ public class MySQLiteAdapter {
         closeDatabase();
         return list;
     }
-    public List<Infor> queryBySubject(String subject){
+    public List<Infor> queryByCourse(String course){
         openDatabase();
         List<Infor> list=new ArrayList<Infor>();
-        Cursor cursor=db.query("information",null,"subject=?",new String[]{subject},null,null,null);
+        Cursor cursor=db.query("information",null,"course=?",new String[]{course},null,null,null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
                 Infor infor=new Infor();
+                infor.setNumber(cursor.getString(cursor.getColumnIndex("number")));
                 infor.setName(cursor.getString(cursor.getColumnIndex("name")));
-                infor.setSubject(cursor.getString(cursor.getColumnIndex("subject")));
+                infor.setCourse(cursor.getString(cursor.getColumnIndex("course")));
                 infor.setScore(cursor.getFloat(cursor.getColumnIndex("score")));
                 list.add(infor);
             }while (cursor.moveToNext());
@@ -101,16 +103,17 @@ public class MySQLiteAdapter {
         closeDatabase();
         return list;
     }
-    public List<Infor> query(String name,String subject){
+    public List<Infor> query(String number,String name,String course){
         openDatabase();
         List<Infor> list=new ArrayList<Infor>();
-        Cursor cursor=db.query("information",null,"name=? and subject=?",new String[]{name,subject},null,null,null);
+        Cursor cursor=db.query("information",null,"number=? or name=? and subject=?",new String[]{number,name,course},null,null,null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
                 Infor infor=new Infor();
+                infor.setNumber(cursor.getString(cursor.getColumnIndex("number")));
                 infor.setName(cursor.getString(cursor.getColumnIndex("name")));
-                infor.setSubject(cursor.getString(cursor.getColumnIndex("subject")));
+                infor.setCourse(cursor.getString(cursor.getColumnIndex("course")));
                 infor.setScore(cursor.getFloat(cursor.getColumnIndex("score")));
                 list.add(infor);
             }while (cursor.moveToNext());
@@ -119,7 +122,7 @@ public class MySQLiteAdapter {
         return list;
     }
     //修改
-    */
+
     public boolean update(Infor infor){
         boolean result=false;
         openDatabase();

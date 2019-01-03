@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class QueryActivity extends AppCompatActivity {
     EditText edtTxt_number,edtTxt_name,edtTxt_course;
     Button btn_query,btn_return;
@@ -24,6 +28,33 @@ public class QueryActivity extends AppCompatActivity {
         btn_query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String number=edtTxt_number.getText().toString().trim();
+                String name=edtTxt_name.getText().toString().trim();
+                String course=edtTxt_course.getText().toString().trim();
+                MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
+                List<Infor> list=new ArrayList<>();
+                if(!name.equals("")) {
+                    if (!course.equals("")) {
+                        list = adapter.query(number,name, course);
+                    } else {
+                        list = adapter.queryBynameNo(number,name);
+                    }
+                }else{
+                    if(!course.equals("")){
+                        list=adapter.queryByCourse(course);
+                    }else{
+                        list=adapter.queryAll();
+                    }
+                }
+                /*Iterator<Infor> iter=list.iterator();
+                tv_display.setText(null);
+                while (iter.hasNext()){
+                    Infor infor=iter.next();
+                    tv_display.append("   "+infor.getName()+"   ");
+                    tv_display.append(infor.getSubject()+"   ");
+                    tv_display.append(String.valueOf(infor.getScore()));
+                    tv_display.append("\n");
+                }*/
 
             }
         });
