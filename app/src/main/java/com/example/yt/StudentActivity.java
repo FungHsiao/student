@@ -13,7 +13,6 @@ public class StudentActivity extends AppCompatActivity {
     EditText edtTxt_number,edtTxt_name;
     Button btn_query,btn_return;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +26,16 @@ public class StudentActivity extends AppCompatActivity {
         btn_query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(StudentActivity.this,StuQueryActivity.class);
-                intent.putExtra("number",edtTxt_number.getText().toString().trim());
-                intent.putExtra("name",edtTxt_name.getText().toString().trim());
-                startActivity(intent);
+                String number=edtTxt_number.getText().toString().trim();
+                String name=edtTxt_name.getText().toString().trim();
+                if((number.equals(""))||(name.equals(""))){
+                    Toast.makeText(getApplicationContext(),"学号与姓名不能为空",Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(StudentActivity.this, StuQueryActivity.class);
+                    intent.putExtra("number", edtTxt_number.getText().toString().trim());
+                    intent.putExtra("name", edtTxt_name.getText().toString().trim());
+                    startActivity(intent);
+                }
             }
         });
 

@@ -26,24 +26,31 @@ public class InsertActivity extends AppCompatActivity {
         btn_insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
-                Infor infor=new Infor();
-                infor.setNumber(edtTxt_number.getText().toString().trim());
-                infor.setName(edtTxt_name.getText().toString().trim());
-                infor.setCourse(edtTxt_course.getText().toString().trim());
-                infor.setScore(Float.valueOf(edtTxt_score.getText().toString().trim()));
-                long result=adapter.insert(infor);
-                if(result==0){
-                    Toast.makeText(getApplicationContext(),"该成绩已存在",Toast.LENGTH_SHORT).show();
-                }else if(result>0){
-                    Toast.makeText(getApplicationContext(),"成绩录入成功",Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),"成绩录入失败",Toast.LENGTH_SHORT).show();
-                }
-                edtTxt_course.setText(null);
-                edtTxt_score.setText(null);
+                String number = edtTxt_number.getText().toString().trim();
+                String name = edtTxt_name.getText().toString().trim();
+                String course = edtTxt_course.getText().toString().trim();
+                String score =edtTxt_score.getText().toString().trim();
+                if (number.equals("") || name.equals("") || course.equals("") || score.equals("")) {
+                    Toast.makeText(getApplicationContext(), "不能为空", Toast.LENGTH_SHORT).show();
+                } else {
+                    MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
+                    Infor infor = new Infor();
+                    infor.setNumber(edtTxt_number.getText().toString().trim());
+                    infor.setName(edtTxt_name.getText().toString().trim());
+                    infor.setCourse(edtTxt_course.getText().toString().trim());
+                    infor.setScore(Float.valueOf(edtTxt_score.getText().toString().trim()));
+                    long result = adapter.insert(infor);
+                    if (result == 0) {
+                        Toast.makeText(getApplicationContext(), "该成绩已存在", Toast.LENGTH_SHORT).show();
+                    } else if (result > 0) {
+                        Toast.makeText(getApplicationContext(), "成绩录入成功", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "成绩录入失败", Toast.LENGTH_SHORT).show();
+                    }
+                    edtTxt_course.setText(null);
+                    edtTxt_score.setText(null);
 
+                }
             }
         });
 
