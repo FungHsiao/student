@@ -67,6 +67,42 @@ public class MySQLiteAdapter {
         closeDatabase();
         return list;
     }
+    public List<Infor> queryByname(String name){
+        openDatabase();
+        List<Infor> list=new ArrayList<Infor>();
+        Cursor cursor=db.query("information",null,"name=?",new String[]{name},null,null,null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                Infor infor=new Infor();
+                infor.setNumber(cursor.getString(cursor.getColumnIndex("number")));
+                infor.setName(cursor.getString(cursor.getColumnIndex("name")));
+                infor.setCourse(cursor.getString(cursor.getColumnIndex("course")));
+                infor.setScore(cursor.getFloat(cursor.getColumnIndex("score")));
+                list.add(infor);
+            }while (cursor.moveToNext());
+        }
+        closeDatabase();
+        return list;
+    }
+    public List<Infor> queryBynameCourse(String name,String course){
+        openDatabase();
+        List<Infor> list=new ArrayList<Infor>();
+        Cursor cursor=db.query("information",null,"name=? and course?",new String[]{name,course},null,null,null);
+        if(cursor.getCount()>0){
+            cursor.moveToFirst();
+            do{
+                Infor infor=new Infor();
+                infor.setNumber(cursor.getString(cursor.getColumnIndex("number")));
+                infor.setName(cursor.getString(cursor.getColumnIndex("name")));
+                infor.setCourse(cursor.getString(cursor.getColumnIndex("course")));
+                infor.setScore(cursor.getFloat(cursor.getColumnIndex("score")));
+                list.add(infor);
+            }while (cursor.moveToNext());
+        }
+        closeDatabase();
+        return list;
+    }
     public List<Infor> queryBynameNo(String number,String name){
         openDatabase();
         List<Infor> list=new ArrayList<Infor>();

@@ -8,51 +8,39 @@
     tools:context=".QueryActivity">
 
     <EditText
-        android:id="@+id/edtTxt_query_number"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="学号"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/edtTxt_query_name"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
-
-    <EditText
         android:id="@+id/edtTxt_query_name"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="姓名"
         android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edtTxt_query_number"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/edtTxt_query_course"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/edtTxt_query_number" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19" />
 
     <EditText
         android:id="@+id/edtTxt_query_course"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="科目"
         android:inputType="textPersonName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edtTxt_query_number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edtTxt_query_name"
         app:layout_constraintEnd_toStartOf="@+id/btn_query_query"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/edtTxt_query_name" />
 
     <Button
         android:id="@+id/btn_query_query"
-        android:layout_width="70dp"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button2"
         android:text="查询"
-        app:layout_constraintBaseline_toBaselineOf="@+id/edtTxt_query_number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edtTxt_query_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/edtTxt_query_course" />
@@ -61,25 +49,39 @@
         android:id="@+id/btn_query_return"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/return1"
         android:text="   返回"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_query_all" />
 
     <ListView
         android:id="@+id/lv_query_display"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_query_return"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTxt_query_number" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTxt_query_name" />
+
+    <Button
+        android:id="@+id/btn_query_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button2"
+        android:text="查询所有成绩"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_query_return"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
