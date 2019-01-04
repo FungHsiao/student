@@ -22,7 +22,7 @@
         <activity android:name=".QueryActivity" />
         <activity android:name=".UpdateActivity" />
         <activity android:name=".DeleteActivity" />
-        <activity android:name=".deleteDialog"></activity>
+        <activity android:name=".deleteDialog" />
     </application>
 
 </manifest>
