@@ -49,7 +49,7 @@ public class TeacherActivity extends AppCompatActivity {
         btn_return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(TeacherActivity.this,MainActivity.class);
+                Intent intent=new Intent(TeacherActivity.this,delete1.class);
                 startActivity(intent);
             }
         });
