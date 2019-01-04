@@ -70,7 +70,7 @@ public class MySQLiteAdapter {
     public List<Infor> queryBynameNo(String number,String name){
         openDatabase();
         List<Infor> list=new ArrayList<Infor>();
-        Cursor cursor=db.query("information",null,"number=? or name=?",new String[]{number,name},null,null,null);
+        Cursor cursor=db.query("information",null,"number=? and name=?",new String[]{number,name},null,null,null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{
@@ -106,7 +106,7 @@ public class MySQLiteAdapter {
     public List<Infor> query(String number,String name,String course){
         openDatabase();
         List<Infor> list=new ArrayList<Infor>();
-        Cursor cursor=db.query("information",null,"number=? or name=? and subject=?",new String[]{number,name,course},null,null,null);
+        Cursor cursor=db.query("information",null,"number=? and name=? and course=?",new String[]{number,name,course},null,null,null);
         if(cursor.getCount()>0){
             cursor.moveToFirst();
             do{

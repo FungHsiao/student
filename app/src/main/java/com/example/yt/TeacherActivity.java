@@ -5,6 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class TeacherActivity extends AppCompatActivity {
     Button btn_insert,btn_query,btn_update,btn_delete,btn_return;

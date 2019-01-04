@@ -23,6 +23,7 @@
         <activity android:name=".UpdateActivity" />
         <activity android:name=".DeleteActivity" />
         <activity android:name=".deleteDialog" />
+        <activity android:name=".StuQueryActivity"></activity>
     </application>
 
 </manifest>

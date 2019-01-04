@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class DeleteActivity extends AppCompatActivity {
     TextView tv_display;
     EditText edtTxt_number,edtTxt_name,edtTxt_course;
