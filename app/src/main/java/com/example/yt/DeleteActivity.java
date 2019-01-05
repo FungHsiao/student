@@ -6,14 +6,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Xml;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,75 +24,73 @@ import java.util.List;
 
 public class DeleteActivity extends AppCompatActivity {
     ListView lv_display;
-    EditText edtTxt_number,edtTxt_name,edtTxt_course;
-    Button btn_all,btn_delete,btn_return;
+    Button btn_all, btn_delete, btn_return;
     List<Infor> list;
+    private  DeletBean deletBean;
+    private  MyBasedAdapter listadapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
 
-        lv_display=findViewById(R.id.lv_delete_display);
-        edtTxt_number=findViewById(R.id.edtTxt_delete_number);
-        edtTxt_name=findViewById(R.id.edtTxt_delete_name);
-        edtTxt_course=findViewById(R.id.edtTxt_delete_course);
-        btn_all=findViewById(R.id.btn_delete_all);
-        btn_delete=findViewById(R.id.btn_delete_delete);
-        btn_return=findViewById(R.id.btn_delete_return);
+        lv_display = findViewById(R.id.lv_delete_display);
+        btn_all = findViewById(R.id.btn_delete_all);
+        btn_return = findViewById(R.id.btn_delete_return);
 
-        MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
-        list=adapter.queryAll();
-        MyBasedAdapter listadapter=new MyBasedAdapter(list);
+        MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
+        list = adapter.queryAll();
+
+         listadapter = new MyBasedAdapter(list);
         lv_display.setAdapter(listadapter);
+
+        lv_display.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Infor infor = list.get(position);
+                deletBean=new DeletBean(infor.getNumber(),infor.getName(),infor.getCourse());
+                delete_one_dialogActivity done = new delete_one_dialogActivity(DeleteActivity.this, "确定要删除该成绩吗");
+                done.show();
+
+
+            }
+        });
 
 
         btn_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteDialog dia=new deleteDialog(DeleteActivity.this,"该操作将无法恢复，请谨慎使用！");
+                deleteDialog dia = new deleteDialog(DeleteActivity.this, "该操作将无法恢复，请谨慎使用！");
                 dia.show();
-            }
-        });
-        btn_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String number=edtTxt_number.getText().toString().trim();
-                String name=edtTxt_name.getText().toString().trim();
-                String course=edtTxt_course.getText().toString().trim();
-                MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
-                Log.i("number",number);
-                Log.i("name",name);
-                Log.i("course",course);
-                adapter.delete(number,name,course);
-                list=adapter.queryAll();
-                MyBasedAdapter listadapter=new MyBasedAdapter(list);
-                lv_display.setAdapter(listadapter);
-
             }
         });
         btn_return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(DeleteActivity.this,TeacherActivity.class);
+                Intent intent = new Intent(DeleteActivity.this, TeacherActivity.class);
                 startActivity(intent);
             }
         });
 
     }
+
     public class deleteDialog extends Dialog {
-        Button btn_ok,btn_cancel;
-        String dialogName;
-        public deleteDialog(Context context, String dialogName){
+        Button btn_ok, btn_cancel;
+        private String dialogName;
+
+        public deleteDialog(Context context, String dialogName) {
             super(context);
-            this.dialogName=dialogName;
+            this.dialogName = dialogName;
         }
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             requestWindowFeature(Window.FEATURE_NO_TITLE);
             setContentView(R.layout.activity_delete_dialog);
-            btn_ok=findViewById(R.id.btn_dialog_ok);
-            btn_cancel=findViewById(R.id.btn_dialog_cancel);
+            btn_ok = findViewById(R.id.btn_dialog_ok);
+            btn_cancel = findViewById(R.id.btn_dialog_cancel);
+
 
             btn_cancel.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,22 +101,25 @@ public class DeleteActivity extends AppCompatActivity {
             btn_ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
+                    MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
                     adapter.deleteAll();
-                    list=adapter.queryAll();
-                    MyBasedAdapter listadapter=new MyBasedAdapter(list);
+                    list = adapter.queryAll();
+                    MyBasedAdapter listadapter = new MyBasedAdapter(list);
                     lv_display.setAdapter(listadapter);
                     dismiss();
                 }
             });
 
+
         }
 
     }
+
     class MyBasedAdapter extends BaseAdapter {
         List<Infor> list;
-        public MyBasedAdapter(List<Infor>list){
-            this.list=list;
+
+        public MyBasedAdapter(List<Infor> list) {
+            this.list = list;
         }
 
         @Override
@@ -135,14 +139,14 @@ public class DeleteActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view=View.inflate(DeleteActivity.this,R.layout.list_itme_rea,null);
+            View view = View.inflate(DeleteActivity.this, R.layout.list_itme_rea, null);
 
-            TextView tv_number=view.findViewById(R.id.tv_listItme_rea_number);
-            TextView tv_name=view.findViewById(R.id.tv_listItme_rea_name);
-            TextView tv_course=view.findViewById(R.id.tv_listItme_rea_course);
-            TextView tv_score=view.findViewById(R.id.tv_listItme_rea_score);
+            TextView tv_number = view.findViewById(R.id.tv_listItme_rea_number);
+            TextView tv_name = view.findViewById(R.id.tv_listItme_rea_name);
+            TextView tv_course = view.findViewById(R.id.tv_listItme_rea_course);
+            TextView tv_score = view.findViewById(R.id.tv_listItme_rea_score);
 
-            Infor infor=(Infor) getItem(position);
+            Infor infor = (Infor) getItem(position);
             tv_number.setText(infor.getNumber());
             tv_name.setText(infor.getName());
             tv_course.setText(infor.getCourse());
@@ -150,5 +154,46 @@ public class DeleteActivity extends AppCompatActivity {
 
             return view;
         }
+    }
+
+    public class delete_one_dialogActivity extends Dialog {
+
+        Button btn_ok, btn_cancel;
+        private String dialogNameone;
+
+        public delete_one_dialogActivity(Context context, String dialogNameone) {
+            super(context);
+            this.dialogNameone = dialogNameone;
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            setContentView(R.layout.activity_delete_one_dialog);
+            btn_ok = findViewById(R.id.btn_one_ok);
+            btn_cancel = findViewById(R.id.btn_one_cancel);
+
+            btn_cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
+            btn_ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
+                    adapter.delete(deletBean.getNumb(),deletBean.getName(),deletBean.getCoures());
+                    list = adapter.queryAll();
+                    MyBasedAdapter listadapter=new MyBasedAdapter(list);
+                    lv_display.setAdapter(listadapter);
+                    dismiss();
+                }
+            });
+
+
+        }
+
     }
 }
