@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class InsertActivity extends AppCompatActivity {
     EditText edtTxt_number,edtTxt_name,edtTxt_course,edtTxt_score;
-    Button btn_insert,btn_return;
+    Button btn_insert;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,6 @@ public class InsertActivity extends AppCompatActivity {
         edtTxt_course=findViewById(R.id.edtTxt_insert_course);
         edtTxt_score=findViewById(R.id.edtTxt_insert_score);
         btn_insert=findViewById(R.id.btn_insert_update);
-        btn_return=findViewById(R.id.btn_insert_return);
 
         btn_insert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,13 +53,6 @@ public class InsertActivity extends AppCompatActivity {
             }
         });
 
-        btn_return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(InsertActivity.this,TeacherActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 }

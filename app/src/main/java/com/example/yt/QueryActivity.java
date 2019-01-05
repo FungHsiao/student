@@ -16,7 +16,7 @@ import java.util.List;
 
 public class QueryActivity extends AppCompatActivity {
     EditText edtTxt_name,edtTxt_course;
-    Button btn_query,btn_return,btn_all;
+    Button btn_query,btn_all;
     ListView lv_display;
     List<Infor> list;
     @Override
@@ -27,7 +27,6 @@ public class QueryActivity extends AppCompatActivity {
         edtTxt_name=findViewById(R.id.edtTxt_query_name);
         edtTxt_course=findViewById(R.id.edtTxt_query_course);
         btn_query=findViewById(R.id.btn_query_query);
-        btn_return=findViewById(R.id.btn_query_return);
         lv_display=findViewById(R.id.lv_query_display);
         btn_all=findViewById(R.id.btn_query_all);
 
@@ -67,13 +66,7 @@ public class QueryActivity extends AppCompatActivity {
                 }
             }
         });
-        btn_return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(QueryActivity.this,TeacherActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
     class MyBasedAdapter extends BaseAdapter {
         List<Infor> list;

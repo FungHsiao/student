@@ -24,7 +24,7 @@ import java.util.List;
 
 public class DeleteActivity extends AppCompatActivity {
     ListView lv_display;
-    Button btn_all, btn_delete, btn_return;
+    Button btn_all;
     List<Infor> list;
     private  DeletBean deletBean;
     private  MyBasedAdapter listadapter;
@@ -35,7 +35,6 @@ public class DeleteActivity extends AppCompatActivity {
 
         lv_display = findViewById(R.id.lv_delete_display);
         btn_all = findViewById(R.id.btn_delete_all);
-        btn_return = findViewById(R.id.btn_delete_return);
 
         MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
         list = adapter.queryAll();
@@ -62,13 +61,6 @@ public class DeleteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 deleteDialog dia = new deleteDialog(DeleteActivity.this, "该操作将无法恢复，请谨慎使用！");
                 dia.show();
-            }
-        });
-        btn_return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DeleteActivity.this, TeacherActivity.class);
-                startActivity(intent);
             }
         });
 

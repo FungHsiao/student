@@ -114,17 +114,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_insert_score" />
 
-    <Button
-        android:id="@+id/btn_insert_return"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/return1"
-        android:text="  返回"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_insert_update"
-        app:layout_constraintVertical_bias="0.871" />
-
 </android.support.constraint.ConstraintLayout>

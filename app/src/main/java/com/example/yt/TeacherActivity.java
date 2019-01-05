@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TeacherActivity extends AppCompatActivity {
-    Button btn_insert,btn_query,btn_update,btn_delete,btn_return;
+    Button btn_insert,btn_query,btn_update,btn_delete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +22,6 @@ public class TeacherActivity extends AppCompatActivity {
         btn_query=findViewById(R.id.btn_teacher_query);
         btn_update=findViewById(R.id.btn_teacher_update);
         btn_delete=findViewById(R.id.btn_teacher_delete);
-        btn_return=findViewById(R.id.btn_teacher_return);
 
         btn_insert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,12 +51,6 @@ public class TeacherActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btn_return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(TeacherActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 }

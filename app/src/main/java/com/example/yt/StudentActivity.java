@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class StudentActivity extends AppCompatActivity {
     EditText edtTxt_number,edtTxt_name;
-    Button btn_query,btn_return;
+    Button btn_query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,6 @@ public class StudentActivity extends AppCompatActivity {
         edtTxt_number=findViewById(R.id.edtTxt_student_number);
         edtTxt_name=findViewById(R.id.edtTxt_student_name);
         btn_query=findViewById(R.id.btn_student_query);
-        btn_return=findViewById(R.id.btn_student_return);
 
         btn_query.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,12 +38,5 @@ public class StudentActivity extends AppCompatActivity {
             }
         });
 
-        btn_return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(StudentActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }

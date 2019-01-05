@@ -56,18 +56,4 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_teacher_update" />
 
-    <Button
-        android:id="@+id/btn_teacher_return"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/home"
-        android:foregroundGravity="right"
-        android:text="返回首页"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.873"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_teacher_update"
-        app:layout_constraintVertical_bias="0.887" />
-
 </android.support.constraint.ConstraintLayout>

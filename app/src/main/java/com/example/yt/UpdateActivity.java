@@ -16,8 +16,6 @@ import java.util.List;
 
 public class UpdateActivity extends AppCompatActivity {
     ListView lv_display;
-    EditText edtTxt_number,edtTxt_name,edtTxt_course,edtTxt_score;
-    Button btn_update,btn_return;
     List<Infor> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +23,15 @@ public class UpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update);
 
         lv_display=findViewById(R.id.lv_update_display);
-        edtTxt_number=findViewById(R.id.edtTxt_update_number);
-        edtTxt_name=findViewById(R.id.edtTxt_update_name);
-        edtTxt_course=findViewById(R.id.edtTxt_update_course);
-        edtTxt_score=findViewById(R.id.edtTxt_update_score);
-        btn_update=findViewById(R.id.btn_update_update);
-        btn_return=findViewById(R.id.btn_update_return);
+
+
 
         MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
         list=adapter.queryAll();
         MyBasedAdapter listadapter=new MyBasedAdapter(list);
         lv_display.setAdapter(listadapter);
 
-        btn_update.setOnClickListener(new View.OnClickListener() {
+        /*btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String number = edtTxt_number.getText().toString().trim();
@@ -62,14 +56,7 @@ public class UpdateActivity extends AppCompatActivity {
 
                 }
             }
-        });
-        btn_return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(UpdateActivity.this,TeacherActivity.class);
-                startActivity(intent);
-            }
-        });
+        });*/
     }
     class MyBasedAdapter extends BaseAdapter {
         List<Infor> list;
@@ -94,12 +81,12 @@ public class UpdateActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view=View.inflate(UpdateActivity.this,R.layout.list_itme_rea,null);
+            View view=View.inflate(UpdateActivity.this,R.layout.list_update,null);
 
-            TextView tv_number=view.findViewById(R.id.tv_listItme_rea_number);
-            TextView tv_name=view.findViewById(R.id.tv_listItme_rea_name);
-            TextView tv_course=view.findViewById(R.id.tv_listItme_rea_course);
-            TextView tv_score=view.findViewById(R.id.tv_listItme_rea_score);
+            TextView tv_number=view.findViewById(R.id.edt_list_update_number);
+            TextView tv_name=view.findViewById(R.id.edt_list_update_name);
+            TextView tv_course=view.findViewById(R.id.edt_list_update_course);
+            TextView tv_score=view.findViewById(R.id.edt_list_update_score);
 
             Infor infor=(Infor) getItem(position);
             tv_number.setText(infor.getNumber());
