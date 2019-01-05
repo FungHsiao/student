@@ -64,6 +64,7 @@ public class StuQueryActivity extends AppCompatActivity {
             TextView tv_course=view.findViewById(R.id.tv_listItme_course);
             TextView tv_score=view.findViewById(R.id.tv_listItme_score);
 
+
             Infor infor=(Infor) getItem(position);
             tv_course.setText(infor.getCourse());
             tv_score.setText(String.valueOf(infor.getScore()));
