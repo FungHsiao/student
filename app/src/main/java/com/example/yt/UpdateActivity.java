@@ -1,10 +1,14 @@
 package com.example.yt;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +21,8 @@ import java.util.List;
 public class UpdateActivity extends AppCompatActivity {
     ListView lv_display;
     List<Infor> list;
+    private  DeletBean deletBean;
+    private MyBasedAdapter listadapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +31,15 @@ public class UpdateActivity extends AppCompatActivity {
         lv_display=findViewById(R.id.lv_update_display);
 
 
+        lv_display.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Infor infor = list.get(position);
+                deletBean=new DeletBean(infor.getNumber(),infor.getName(),infor.getCourse());
+                UpdateDialogActivity updialog=new UpdateDialogActivity(UpdateActivity.this,"");
+                updialog.show();
+            }
+        });
 
         MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
         list=adapter.queryAll();
@@ -81,12 +96,12 @@ public class UpdateActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View view=View.inflate(UpdateActivity.this,R.layout.list_update,null);
+            View view=View.inflate(UpdateActivity.this,R.layout.list_itme_rea,null);
 
-            TextView tv_number=view.findViewById(R.id.edt_list_update_number);
-            TextView tv_name=view.findViewById(R.id.edt_list_update_name);
-            TextView tv_course=view.findViewById(R.id.edt_list_update_course);
-            TextView tv_score=view.findViewById(R.id.edt_list_update_score);
+            TextView tv_number=view.findViewById(R.id.tv_listItme_rea_number);
+            TextView tv_name=view.findViewById(R.id.tv_listItme_rea_name);
+            TextView tv_course=view.findViewById(R.id.tv_listItme_rea_course);
+            TextView tv_score=view.findViewById(R.id.tv_listItme_rea_score);
 
             Infor infor=(Infor) getItem(position);
             tv_number.setText(infor.getNumber());
@@ -94,7 +109,59 @@ public class UpdateActivity extends AppCompatActivity {
             tv_course.setText(infor.getCourse());
             tv_score.setText(String.valueOf(infor.getScore()));
 
+
+
             return view;
+        }
+    }
+    public class UpdateDialogActivity extends Dialog {
+
+        Button btn_ok, btn_cancel;
+        EditText edt_course,edt_score;
+        private String dialogName;
+
+        public UpdateDialogActivity(Context context, String dialogName) {
+            super(context);
+            this.dialogName = dialogName;
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            setContentView(R.layout.activity_update_dialog);
+            btn_ok = findViewById(R.id.btn__update_dialog_ok);
+            btn_cancel = findViewById(R.id.btn_update_dialog_cancel);
+            edt_course=findViewById(R.id.edt_update_dialog_course);
+            edt_score=findViewById(R.id.edt_update_dialog_score);
+
+
+            btn_cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                }
+            });
+            btn_ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String course=edt_course.getText().toString().trim();
+                    Float score=Float.valueOf(edt_score.getText().toString().trim());
+                    Infor infor = new Infor();
+                    infor.setNumber(deletBean.getNumb());
+                    infor.setName(deletBean.getName());
+                    infor.setCourse(course);
+                    infor.setScore(score);
+                    MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
+                    adapter.update(infor);
+                    list = adapter.queryAll();
+                    MyBasedAdapter listadapter = new MyBasedAdapter(list);
+                    lv_display.setAdapter(listadapter);
+                    dismiss();
+                }
+            });
+
+
         }
     }
 }

@@ -35,6 +35,8 @@ public class QueryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 MySQLiteAdapter adapter=new MySQLiteAdapter(getApplicationContext(),"database.db");
                 list=adapter.queryAll();
+                edtTxt_name.setText(null);
+                edtTxt_course.setText(null);
                 MyBasedAdapter listadapter=new MyBasedAdapter(list);
                 lv_display.setAdapter(listadapter);
             }
@@ -51,13 +53,17 @@ public class QueryActivity extends AppCompatActivity {
                     MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
                     if (!name.equals("")) {
                         if (!course.equals("")) {
-                            list = adapter.queryBynameCourse(name, course);
+                            list = adapter.query(name, course);
                         } else {
                             list = adapter.queryByname(name);
                         }
                     } else {
                         if (!course.equals("")) {
                             list = adapter.queryByCourse(course);
+                        }else{
+                            list= adapter.queryAll();
+                            edtTxt_name.setText(null);
+                            edtTxt_course.setText(null);
                         }
                     }
                     MyBasedAdapter listadapter = new MyBasedAdapter(list);

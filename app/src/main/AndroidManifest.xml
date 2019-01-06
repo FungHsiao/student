@@ -24,7 +24,8 @@
         <activity android:name=".DeleteActivity" />
         <activity android:name=".deleteDialog" />
         <activity android:name=".StuQueryActivity" />
-        <activity android:name=".delete_one_dialogActivity"></activity>
+        <activity android:name=".delete_one_dialogActivity" />
+        <activity android:name=".UpdateDialogActivity"></activity>
     </application>
 
 </manifest>
