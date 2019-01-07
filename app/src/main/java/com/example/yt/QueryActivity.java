@@ -16,7 +16,7 @@ import java.util.List;
 
 public class QueryActivity extends AppCompatActivity {
     EditText edtTxt_name,edtTxt_course;
-    Button btn_query,btn_all;
+    Button btn_query,btn_all,btn_home;
     ListView lv_display;
     List<Infor> list;
     @Override
@@ -29,7 +29,16 @@ public class QueryActivity extends AppCompatActivity {
         btn_query=findViewById(R.id.btn_query_query);
         lv_display=findViewById(R.id.lv_query_display);
         btn_all=findViewById(R.id.btn_query_all);
+        btn_home=findViewById(R.id.btn_query_home);
 
+
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(QueryActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
         btn_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

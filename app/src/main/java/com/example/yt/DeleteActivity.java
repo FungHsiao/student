@@ -24,7 +24,7 @@ import java.util.List;
 
 public class DeleteActivity extends AppCompatActivity {
     ListView lv_display;
-    Button btn_all;
+    Button btn_all,btn_home;
     List<Infor> list;
     private  DeletBean deletBean;
     private  MyBasedAdapter listadapter;
@@ -35,6 +35,7 @@ public class DeleteActivity extends AppCompatActivity {
 
         lv_display = findViewById(R.id.lv_delete_display);
         btn_all = findViewById(R.id.btn_delete_all);
+        btn_home=findViewById(R.id.btn_delete_home);
 
         MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
         list = adapter.queryAll();
@@ -55,6 +56,13 @@ public class DeleteActivity extends AppCompatActivity {
             }
         });
 
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DeleteActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btn_all.setOnClickListener(new View.OnClickListener() {
             @Override

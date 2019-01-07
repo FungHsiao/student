@@ -62,7 +62,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_query_all"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_query_number" />
 
     <Button
         android:id="@+id/btn_query_all"
@@ -77,7 +77,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/tv_query_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -86,38 +86,38 @@
         android:gravity="center"
         android:text="学号"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView12"
+        app:layout_constraintEnd_toStartOf="@+id/tv_query_name"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtTxt_query_name" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/tv_query_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="姓名"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
-        app:layout_constraintEnd_toStartOf="@+id/textView13"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_query_number"
+        app:layout_constraintEnd_toStartOf="@+id/tv_query_course"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView11" />
+        app:layout_constraintStart_toEndOf="@+id/tv_query_number" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/tv_query_course"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="科目"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
-        app:layout_constraintEnd_toStartOf="@+id/textView14"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_query_number"
+        app:layout_constraintEnd_toStartOf="@+id/tv_query_score"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView12" />
+        app:layout_constraintStart_toEndOf="@+id/tv_query_name" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/tv_query_score"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -125,8 +125,23 @@
         android:gravity="center"
         android:text="成绩"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_query_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView13" />
+        app:layout_constraintStart_toEndOf="@+id/tv_query_course" />
+    <Button
+        android:id="@+id/btn_query_home"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/home1"
+        android:elevation="1dp"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.925"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.965" />
 </android.support.constraint.ConstraintLayout>

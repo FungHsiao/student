@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class StuQueryActivity extends AppCompatActivity {
     TextView tv_number,tv_name;
     ListView lv_display;
     List<Infor> list;
+    Button btn_home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,15 @@ public class StuQueryActivity extends AppCompatActivity {
         tv_number=findViewById(R.id.tv_stu_number);
         tv_name=findViewById(R.id.tv_stu_name);
         lv_display=findViewById(R.id.lv_stu_display);
+        btn_home=findViewById(R.id.btn_stuQuery_home);
+
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(StuQueryActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Intent intent=getIntent();
         String number=intent.getStringExtra("number");

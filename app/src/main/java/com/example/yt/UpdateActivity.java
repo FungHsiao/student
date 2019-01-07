@@ -21,6 +21,7 @@ import java.util.List;
 public class UpdateActivity extends AppCompatActivity {
     ListView lv_display;
     List<Infor> list;
+    Button btn_home;
     private  DeletBean deletBean;
     private MyBasedAdapter listadapter;
     @Override
@@ -29,6 +30,7 @@ public class UpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update);
 
         lv_display=findViewById(R.id.lv_update_display);
+        btn_home =findViewById(R.id.btn_update_home);
 
 
         lv_display.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -46,32 +48,13 @@ public class UpdateActivity extends AppCompatActivity {
         MyBasedAdapter listadapter=new MyBasedAdapter(list);
         lv_display.setAdapter(listadapter);
 
-        /*btn_update.setOnClickListener(new View.OnClickListener() {
+        btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String number = edtTxt_number.getText().toString().trim();
-                String name = edtTxt_name.getText().toString().trim();
-                String course = edtTxt_course.getText().toString().trim();
-                String score1=edtTxt_score.getText().toString().trim();
-                if (number.equals("") && name.equals("") && course.equals("") && score1.equals("")) {
-                    Toast.makeText(getApplicationContext(), "不能为空", Toast.LENGTH_SHORT).show();
-                }
-                    else {
-                    Float score = Float.valueOf(edtTxt_score.getText().toString().trim());
-                    Infor infor = new Infor();
-                    infor.setNumber(number);
-                    infor.setName(name);
-                    infor.setCourse(course);
-                    infor.setScore(score);
-                    MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
-                    adapter.update(infor);
-                    list = adapter.queryAll();
-                    MyBasedAdapter listadapter = new MyBasedAdapter(list);
-                    lv_display.setAdapter(listadapter);
-
-                }
+                Intent intent=new Intent(UpdateActivity.this,MainActivity.class);
+                startActivity(intent);
             }
-        });*/
+        });
     }
     class MyBasedAdapter extends BaseAdapter {
         List<Infor> list;
