@@ -29,21 +29,6 @@
             android:gravity="center">
 
             <EditText
-                android:id="@+id/edt_update_dialog_course"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:hint="请输入科目"
-                android:minHeight="100dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="15dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="15dp"
-                android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
-
-            <EditText
                 android:id="@+id/edt_update_dialog_score"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"

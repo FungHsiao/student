@@ -147,8 +147,7 @@ public class MySQLiteAdapter {
         openDatabase();
         ContentValues values=new ContentValues();
         values.put("score",infor.getScore());
-        values.put("course",infor.getCourse());
-        int num=db.update("information",values,"number=? and name=?",new String[]{infor.getNumber(),infor.getName()});
+        int num=db.update("information",values,"number=? and name=? and course=?",new String[]{infor.getNumber(),infor.getName(),infor.getCourse()});
         if(num>0){
             result=true;
             Toast.makeText(context,"成绩修改成功",Toast.LENGTH_SHORT).show();

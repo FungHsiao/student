@@ -117,7 +117,7 @@ public class UpdateActivity extends AppCompatActivity {
     public class UpdateDialogActivity extends Dialog {
 
         Button btn_ok, btn_cancel;
-        EditText edt_course,edt_score;
+        EditText edt_score;
         private String dialogName;
 
         public UpdateDialogActivity(Context context, String dialogName) {
@@ -132,7 +132,6 @@ public class UpdateActivity extends AppCompatActivity {
             setContentView(R.layout.activity_update_dialog);
             btn_ok = findViewById(R.id.btn__update_dialog_ok);
             btn_cancel = findViewById(R.id.btn_update_dialog_cancel);
-            edt_course=findViewById(R.id.edt_update_dialog_course);
             edt_score=findViewById(R.id.edt_update_dialog_score);
 
 
@@ -145,19 +144,22 @@ public class UpdateActivity extends AppCompatActivity {
             btn_ok.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String course=edt_course.getText().toString().trim();
-                    Float score=Float.valueOf(edt_score.getText().toString().trim());
-                    Infor infor = new Infor();
-                    infor.setNumber(deletBean.getNumb());
-                    infor.setName(deletBean.getName());
-                    infor.setCourse(course);
-                    infor.setScore(score);
-                    MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
-                    adapter.update(infor);
-                    list = adapter.queryAll();
-                    MyBasedAdapter listadapter = new MyBasedAdapter(list);
-                    lv_display.setAdapter(listadapter);
-                    dismiss();
+                    if((edt_score.getText().toString().trim()).equals("")){
+                        Toast.makeText(getApplicationContext(), "请输入有效值", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Float score = Float.valueOf(edt_score.getText().toString().trim());
+                        Infor infor = new Infor();
+                        infor.setNumber(deletBean.getNumb());
+                        infor.setName(deletBean.getName());
+                        infor.setCourse(deletBean.getCoures());
+                        infor.setScore(score);
+                        MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext(), "database.db");
+                        adapter.update(infor);
+                        list = adapter.queryAll();
+                        MyBasedAdapter listadapter = new MyBasedAdapter(list);
+                        lv_display.setAdapter(listadapter);
+                        dismiss();
+                    }
                 }
             });
 
